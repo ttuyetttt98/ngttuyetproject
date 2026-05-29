@@ -1,0 +1,39 @@
+/* HOME PAGE STYLE */
+
+.home-title {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.new-books-section {
+    margin-top: 30px;
+}
+
+/* Grid  */
+.book-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    column-gap: 18px;
+    row-gap: 25px;
+}
+
+/* Card */
+.book-item img {
+    border-radius: 8px;
+    display: block;
+    width: 100%;
+    height: 230px;
+    object-fit: cover;
+}
+
+.book-item-title {
+    margin-top: 8px;
+    font-size: 0.95rem;
+    font-weight: bold;
+}
+
+.book-item-author {
+    font-size: 0.85rem;
+    color: #666;
+}

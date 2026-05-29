@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="container py-5" style="max-width: 600px;">
+
+    <div class="card p-4 shadow-sm text-center">
+
+        <h3 class="fw-bold mb-3">登録が完了しました</h3>
+
+        <p class="mb-4">ご登録ありがとうございます！</p>
+
+        <a href="{% url 'accounts:login' %}" class="btn btn-primary fw-bold w-100">
+            ログインはこちら
+        </a>
+
+    </div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,45 @@
+
+
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<h3 class="fw-bold mb-3">
+    📘 新着の中古本
+</h3>
+
+<div class="row">
+    {% for book in books %}
+        <div class="col-md-3 mb-4">
+            <div class="card book-card shadow-sm">
+
+                <a href="{% url 'products:book_detail' book.id %}">
+                    {% if book.image %}
+                    <img src="{{ book.image.url }}" class="card-img-top"
+                         style="height:220px; object-fit:cover;">
+                    {% else %}
+                    <img src="{% static 'img/noimage.png' %}" class="card-img-top"
+                         style="height:220px; object-fit:cover;">
+                    {% endif %}
+                </a>
+
+                <div class="card-body">
+                    <div class="book-title">{{ book.title }}</div>
+                    <p class="text-danger fw-bold mt-2">{{ book.price }}円</p>
+                </div>
+
+            </div>
+        </div>
+
+    {% empty %}
+        <p>まだ商品がありません。</p>
+    {% endfor %}
+</div>
+
+{% endblock %}
+

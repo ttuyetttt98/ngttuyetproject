@@ -1,0 +1,91 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>中古本マーケット</title>
+
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    {% block extra_css %}{% endblock %}
+</head>
+
+<body style="background:#f4f5f7;">
+
+<!-- HEADER -->
+<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm py-2">
+    <div class="container">
+
+        <a class="navbar-brand fw-bold fs-4 text-primary" href="/">
+            📚 中古本マーケット
+        </a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+
+            <ul class="navbar-nav me-auto ms-4">
+                <li class="nav-item"><a class="nav-link fw-semibold" href="/">ホーム</a></li>
+                <li class="nav-item"><a class="nav-link fw-semibold" href="{% url 'products:book_list' %}">本の一覧</a></li>
+                <li class="nav-item"><a class="nav-link fw-semibold" href="{% url 'inquiries:inquiry_form' %}">お問い合わせ</a></li>
+            </ul>
+
+            <ul class="navbar-nav ms-auto">
+                {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <span class="nav-link fw-bold text-success">こんにちは、{{ user.username }} さん</span>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link text-danger fw-bold" href="{% url 'accounts:logout' %}">ログアウト</a>
+                    </li>
+
+                {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'accounts:login' %}">ログイン</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link fw-bold text-primary" href="{% url 'accounts:signup' %}">新規登録</a>
+                    </li>
+                {% endif %}
+            </ul>
+
+        </div>
+    </div>
+</nav>
+
+<!-- CATEGORY BAR -->
+<div class="bg-white border-bottom shadow-sm">
+    <div class="container text-center py-2 category-bar">
+        <a href="{% url 'products:book_category' 'fiction' %}">文学・小説</a>
+        <a href="{% url 'products:book_category' 'business' %}">ビジネス・経済</a>
+        <a href="{% url 'products:book_category' 'manga' %}">マンガ</a>
+        <a href="{% url 'products:book_category' 'lnovel' %}">ライトノベル</a>
+        <a href="{% url 'products:book_category' 'history' %}">歴史</a>
+        <a href="{% url 'products:book_category' 'hobby' %}">趣味・実用</a>
+        <a href="{% url 'products:book_category' 'study' %}">学習参考書</a>
+        <a href="{% url 'products:book_category' 'other' %}">その他</a>
+    </div>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="container mt-4">
+    {% block content %}{% endblock %}
+</div>
+
+<!-- FOOTER -->
+<footer class="text-center text-muted py-4 mt-5 border-top">
+    <p>© 2025 中古本マーケット</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

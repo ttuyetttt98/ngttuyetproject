@@ -1,0 +1,35 @@
+/* Category bar */
+.category-bar a {
+    margin: 0 18px;
+    font-size: 15px;
+    color: #333;
+    text-decoration: none;
+}
+
+.category-bar a:hover {
+    color: #ff5500;
+}
+
+/* Navbar link */
+.nav-link {
+    font-size: 15px;
+}
+
+/* Card animation */
+.book-card {
+    border-radius: 10px;
+    overflow: hidden;
+    transition: all 0.2s;
+}
+
+.book-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+}
+
+.book-title {
+    font-size: 15px;
+    font-weight: bold;
+    height: 40px;
+    overflow: hidden;
+}
